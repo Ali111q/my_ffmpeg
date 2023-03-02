@@ -1,10 +1,4 @@
 import av
-def resize_frame(frame, size):
-    """
-    Resizes a video frame to the specified size.
-    """
-    import cv2
-    return cv2.resize(frame, size)
 
 input_filename = './hh.mp4'
 output_filename = 'eiufduiowehfuew.mp4'
