@@ -2,7 +2,7 @@ from moviepy.video.io.VideoFileClip import VideoFileClip
 import moviepy.video.fx.all as vfx
 
 # Open the input video
-clip = VideoFileClip('C:\\Users\\ali\\Downloads\\videoplayback.webm')
+clip = VideoFileClip('./IMG_1635.MOV')
 
 # Define the new size
 new_width = 854
