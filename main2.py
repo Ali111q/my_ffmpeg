@@ -1,36 +1,20 @@
 import av
 
-# Open the input video
-input_file = av.open('./hh.mp4')
+input_filename = './hh.mp4'
+output_filename = 'eiufduiowehfuew.mp4'
 
-# Define the new size
-new_width = 854
-new_height = 480
+input_container = av.open(input_filename)
+input_stream = input_container.streams.video[0]
+output_container = av.open(output_filename, mode='w')
 
-# Open the output file for writing
-output_file = av.open('iejdieid.mp4', 'w')
+output_stream = output_container.add_stream('h264', input_stream.rate)
+output_stream.pix_fmt = input_stream.pix_fmt
+output_stream.width = input_stream.width
+output_stream.height = input_stream.height
+output_stream.time_base = input_stream.time_base
 
-# Find the video stream in the input file
-video_stream = next(s for s in input_file.streams if s.type == 'video')
+for frame in input_container.decode(video=0):
+    resized_frame = resize_frame(frame.to_ndarray(), (640, 480))
+    output_stream.encode(resized_frame)
 
-# Create a video stream in the output file with the new size
-output_stream = output_file.add_stream(template=video_stream)
-output_stream.width = new_width
-output_stream.height = new_height
-
-# Enable hardware acceleration for encoding
-output_stream.codec_context.options['vprofile'] = 'high444'
-output_stream.codec_context.options['vpre'] = 'slow'
-output_stream.codec_context.options['crf'] = '23'
-output_stream.codec_context.options['b:v'] = '2M'
-output_stream.codec_context.options['look_ahead'] = '1'
-
-# Iterate over the input frames, resize them, and write them to the output file
-for packet in input_file.demux(video_stream):
-    for frame in packet.decode():
-        resized_frame = frame.reformat(width=new_width, height=new_height)
-        output_stream.encode(resized_frame)
-
-# Close the input and output files
-input_file.close()
-output_file.close()
+output_container.close()
