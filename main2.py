@@ -1,7 +1,7 @@
 import av
 
 # Open the input video
-input_file = av.open('./hh.MOV')
+input_file = av.open('./hh.mp4')
 
 # Define the new size
 new_width = 854
