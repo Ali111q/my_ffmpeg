@@ -16,4 +16,4 @@ resized_clip.write_videofile('weff.mp4',
     bitrate="400k",
     codec='h264',
     preset='ultrafast',
-    ffmpeg_params=['-c:v', 'copy', '-c:a', 'aac', '-strict', 'experimental'])
+    ffmpeg_params=['-c:v', 'h264_nvenc', '-c:a', 'aac', '-strict', 'experimental'])
