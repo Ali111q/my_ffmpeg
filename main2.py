@@ -1,14 +1,14 @@
 import av
 
 # Open the input video
-input_file = av.open('./IMG_1635.MOV')
+input_file = av.open('./hh.MOV')
 
 # Define the new size
 new_width = 854
 new_height = 480
 
 # Open the output file for writing
-output_file = av.open('gpu.mp4', 'w')
+output_file = av.open('iejdieid.mp4', 'w')
 
 # Find the video stream in the input file
 video_stream = next(s for s in input_file.streams if s.type == 'video')
