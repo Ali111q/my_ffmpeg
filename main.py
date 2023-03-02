@@ -12,4 +12,4 @@ new_height = 480
 resized_clip = vfx.resize(clip, (new_width, new_height))
 
 # Save the resized video to a new file
-resized_clip.write_videofile('gpu2.mp4', bitrate="400k", codec='libx264', preset='ultrafast', ffmpeg_params=['-hwaccel', 'auto'])
+resized_clip.write_videofile('weff.mp4', bitrate="400k", codec='libx264', preset='ultrafast', ffmpeg_params=['-hwaccel', 'auto'])
